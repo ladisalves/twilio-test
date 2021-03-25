@@ -1,3 +1,4 @@
+import legacy from '@vitejs/plugin-legacy'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 
 /**
@@ -5,7 +6,12 @@ import reactRefresh from '@vitejs/plugin-react-refresh'
  * @type { import('vite').UserConfig }
  */
 export default {
-  plugins: [reactRefresh()],
+  plugins: [
+    legacy({
+      targets: ['defaults', 'not IE 11']
+    }),
+    reactRefresh(),
+  ],
   server: {
     hmr: {
       port: 443,
